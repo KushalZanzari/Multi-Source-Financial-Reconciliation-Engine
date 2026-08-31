@@ -1,0 +1,101 @@
+{
+  "pipeline_stage": "Baseline Matcher (Exact Match Only)",
+  "total_cases": 10,
+  "correct_cases": 3,
+  "accuracy_percentage": 30.0,
+  "total_human_time_minutes": 45.0,
+  "total_cost_usd": 0.0,
+  "elapsed_seconds": 0.0022,
+  "case_details": [
+    {
+      "case_id": "eval_case_01",
+      "category": "exact_match",
+      "expected_is_match": true,
+      "baseline_is_match": true,
+      "is_correct": true,
+      "human_time_minutes": 0.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_02",
+      "category": "fee_adjusted_amount",
+      "expected_is_match": true,
+      "baseline_is_match": true,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_03",
+      "category": "timing_drift",
+      "expected_is_match": true,
+      "baseline_is_match": true,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_04",
+      "category": "partial_refund",
+      "expected_is_match": true,
+      "baseline_is_match": false,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_05",
+      "category": "duplicate_reference",
+      "expected_is_match": true,
+      "baseline_is_match": true,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_06",
+      "category": "typo_reference_id",
+      "expected_is_match": true,
+      "baseline_is_match": false,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_07",
+      "category": "currency_rounding",
+      "expected_is_match": true,
+      "baseline_is_match": true,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_08",
+      "category": "many_to_one_bundle",
+      "expected_is_match": true,
+      "baseline_is_match": false,
+      "is_correct": false,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_09",
+      "category": "hard_case_unresolved",
+      "expected_is_match": false,
+      "baseline_is_match": false,
+      "is_correct": true,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    },
+    {
+      "case_id": "eval_case_10",
+      "category": "hard_case_miscalibrated",
+      "expected_is_match": false,
+      "baseline_is_match": false,
+      "is_correct": true,
+      "human_time_minutes": 5.0,
+      "cost_usd": 0.0
+    }
+  ]
+}

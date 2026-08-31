@@ -1,0 +1,85 @@
+{
+  "trajectory_id": "traj_eval_case_02",
+  "case_id": "eval_case_02",
+  "category": "fee_adjustment",
+  "input_settlement_record": {
+    "settlement_id": "STL_EVAL_02",
+    "date": "2026-08-02",
+    "gross_amount": 2500.0,
+    "fee": 59.0,
+    "net_amount": 2441.0,
+    "reference_id": "REF_EVAL_02",
+    "order_id": "ORD_EVAL_02"
+  },
+  "pii_masked_payload_sent_to_llm": {
+    "settlement_id": "STL_EVAL_02",
+    "date": "2026-08-02",
+    "gross_amount": 2500.0,
+    "fee": 59.0,
+    "net_amount": 2441.0,
+    "reference_id": "REF_EVAL_02",
+    "order_id": "ORD_EVAL_02"
+  },
+  "candidate_pool": [
+    {
+      "order_id": "ORD_EVAL_02",
+      "date": "2026-08-02",
+      "amount": 2500.0,
+      "customer_ref": "CUST_02",
+      "status": "SETTLED"
+    }
+  ],
+  "agent_reasoning_steps": [
+    {
+      "step": 1,
+      "tool_called": "check_fee_schedule",
+      "tool_arguments": {
+        "gross_amount": 2500.0
+      },
+      "tool_response": {
+        "gross_amount": 2500.0,
+        "standard_fee_pct": 2.0,
+        "gst_pct": 18.0,
+        "total_fee_pct": 2.36,
+        "expected_fee": 59.0,
+        "expected_net_amount": 2441.0
+      }
+    },
+    {
+      "step": 2,
+      "tool_called": "find_similar_reference_ids",
+      "tool_arguments": {
+        "reference_id": "REF_EVAL_02",
+        "candidate_pool": ["ORD_EVAL_02"],
+        "threshold": 3
+      },
+      "tool_response": []
+    },
+    {
+      "step": 3,
+      "tool_called": "get_settlement_window",
+      "tool_arguments": {
+        "order_date": "2026-08-02"
+      },
+      "tool_response": {
+        "order_date": "2026-08-02",
+        "window_start": "2026-07-30",
+        "window_end": "2026-08-05",
+        "allowed_days": 3
+      }
+    }
+  ],
+  "final_decision": {
+    "is_match": true,
+    "confidence": 82.0,
+    "category": "fee_adjustment",
+    "explanation": "Settlement net amount 2441.0 reflects non-standard gateway fee rate compared to expected 2441.0.",
+    "tools_used": [
+      "check_fee_schedule",
+      "find_similar_reference_ids",
+      "get_settlement_window"
+    ]
+  },
+  "checkpoint_action": "auto_approved",
+  "gated_by_human_review": false
+}

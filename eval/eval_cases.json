@@ -1,0 +1,335 @@
+[
+  {
+    "case_id": "eval_case_01",
+    "category": "exact_match",
+    "description": "Clean exact match with identical reference ID and gross amount.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_01",
+      "date": "2026-08-01",
+      "gross_amount": 1000.0,
+      "fee": 23.6,
+      "net_amount": 976.4,
+      "reference_id": "REF_EVAL_01",
+      "order_id": "ORD_EVAL_01"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_01",
+      "date": "2026-08-01",
+      "amount": 1000.0,
+      "customer_ref": "CUST_01",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_01",
+      "date": "2026-08-01",
+      "amount": 976.4,
+      "reference_id": "REF_EVAL_01",
+      "description": "Razorpay Payout REF_EVAL_01"
+    },
+    "expected_is_match": true,
+    "expected_category": "exact_match",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_02",
+    "category": "fee_adjusted_amount",
+    "description": "Net bank payout reflects 2% + 18% GST gateway fee deduction from gross amount.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_02",
+      "date": "2026-08-02",
+      "gross_amount": 2500.0,
+      "fee": 59.0,
+      "net_amount": 2441.0,
+      "reference_id": "REF_EVAL_02",
+      "order_id": "ORD_EVAL_02"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_02",
+      "date": "2026-08-02",
+      "amount": 2500.0,
+      "customer_ref": "CUST_02",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_02",
+      "date": "2026-08-02",
+      "amount": 2441.0,
+      "reference_id": "REF_EVAL_02",
+      "description": "Razorpay Payout REF_EVAL_02"
+    },
+    "expected_is_match": true,
+    "expected_category": "fee_adjustment",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_03",
+    "category": "timing_drift",
+    "description": "3-day date drift between order creation date and bank payout deposit.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_03",
+      "date": "2026-08-04",
+      "gross_amount": 1500.0,
+      "fee": 35.4,
+      "net_amount": 1464.6,
+      "reference_id": "REF_EVAL_03",
+      "order_id": "ORD_EVAL_03"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_03",
+      "date": "2026-08-01",
+      "amount": 1500.0,
+      "customer_ref": "CUST_03",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_03",
+      "date": "2026-08-04",
+      "amount": 1464.6,
+      "reference_id": "REF_EVAL_03",
+      "description": "Razorpay Payout REF_EVAL_03"
+    },
+    "expected_is_match": true,
+    "expected_category": "timing_drift",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_04",
+    "category": "partial_refund",
+    "description": "Settlement gross amount reflects a partial refund against original ledger order.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_04",
+      "date": "2026-08-03",
+      "gross_amount": 800.0,
+      "fee": 18.88,
+      "net_amount": 781.12,
+      "reference_id": "REF_EVAL_04",
+      "order_id": "ORD_EVAL_04"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_04",
+      "date": "2026-08-03",
+      "amount": 1200.0,
+      "customer_ref": "CUST_04",
+      "status": "PARTIALLY_REFUNDED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_04",
+      "date": "2026-08-03",
+      "amount": 781.12,
+      "reference_id": "REF_EVAL_04",
+      "description": "Razorpay Partial Refund Payout REF_EVAL_04"
+    },
+    "expected_is_match": true,
+    "expected_category": "partial_refund",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_05",
+    "category": "duplicate_reference",
+    "description": "Reused duplicate reference ID requiring manual human review queue approval.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_05",
+      "date": "2026-08-05",
+      "gross_amount": 500.0,
+      "fee": 11.8,
+      "net_amount": 488.2,
+      "reference_id": "REF_DUP_999",
+      "order_id": "ORD_EVAL_05"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_05",
+      "date": "2026-08-05",
+      "amount": 500.0,
+      "customer_ref": "CUST_05",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_05",
+      "date": "2026-08-05",
+      "amount": 488.2,
+      "reference_id": "REF_DUP_999",
+      "description": "Razorpay Duplicate Ref Payout REF_DUP_999"
+    },
+    "expected_is_match": true,
+    "expected_category": "duplicate_reference",
+    "expected_action": "human_review"
+  },
+  {
+    "case_id": "eval_case_06",
+    "category": "typo_reference_id",
+    "description": "Single character OCR/typing error in reference ID ('REF_EVAL_06I' vs 'REF_EVAL_061').",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_06",
+      "date": "2026-08-06",
+      "gross_amount": 1800.0,
+      "fee": 42.48,
+      "net_amount": 1757.52,
+      "reference_id": "REF_EVAL_06I",
+      "order_id": "ORD_EVAL_06"
+    },
+    "ledger_record": {
+      "order_id": "REF_EVAL_061",
+      "date": "2026-08-06",
+      "amount": 1800.0,
+      "customer_ref": "CUST_06",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_06",
+      "date": "2026-08-06",
+      "amount": 1757.52,
+      "reference_id": "REF_EVAL_06I",
+      "description": "Razorpay Payout REF_EVAL_06I"
+    },
+    "expected_is_match": true,
+    "expected_category": "typo_reference_id",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_07",
+    "category": "currency_rounding",
+    "description": "Minor ₹0.02 rounding variance between bank statement and settlement net calculation.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_07",
+      "date": "2026-08-07",
+      "gross_amount": 1234.56,
+      "fee": 29.14,
+      "net_amount": 1205.42,
+      "reference_id": "REF_EVAL_07",
+      "order_id": "ORD_EVAL_07"
+    },
+    "ledger_record": {
+      "order_id": "ORD_EVAL_07",
+      "date": "2026-08-07",
+      "amount": 1234.56,
+      "customer_ref": "CUST_07",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_07",
+      "date": "2026-08-07",
+      "amount": 1205.40,
+      "reference_id": "REF_EVAL_07",
+      "description": "Razorpay FX Payout REF_EVAL_07"
+    },
+    "expected_is_match": true,
+    "expected_category": "currency_rounding",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_08",
+    "category": "many_to_one_bundle",
+    "description": "Three separate ledger orders bundled into a single net gateway settlement payout.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_08",
+      "date": "2026-08-08",
+      "gross_amount": 3000.0,
+      "fee": 70.8,
+      "net_amount": 2929.2,
+      "reference_id": "REF_M21_BUNDLE",
+      "order_id": "ORD_M21_MULTIPLE"
+    },
+    "ledger_record": {
+      "order_id": "ORD_M21_01",
+      "date": "2026-08-08",
+      "amount": 1000.0,
+      "customer_ref": "CUST_08A",
+      "status": "SETTLED"
+    },
+    "candidate_ledger_records": [
+      {
+        "order_id": "ORD_M21_01",
+        "date": "2026-08-08",
+        "amount": 1000.0,
+        "customer_ref": "CUST_08A",
+        "status": "SETTLED"
+      },
+      {
+        "order_id": "ORD_M21_02",
+        "date": "2026-08-08",
+        "amount": 1000.0,
+        "customer_ref": "CUST_08B",
+        "status": "SETTLED"
+      },
+      {
+        "order_id": "ORD_M21_03",
+        "date": "2026-08-08",
+        "amount": 1000.0,
+        "customer_ref": "CUST_08C",
+        "status": "SETTLED"
+      }
+    ],
+    "bank_record": {
+      "txn_id": "TXN_EVAL_08",
+      "date": "2026-08-08",
+      "amount": 2929.2,
+      "reference_id": "REF_M21_BUNDLE",
+      "description": "Razorpay Multi-Order Payout REF_M21_BUNDLE"
+    },
+    "expected_is_match": true,
+    "expected_category": "many_to_one",
+    "expected_action": "auto_approve"
+  },
+  {
+    "case_id": "eval_case_09",
+    "category": "hard_case_unresolved",
+    "description": "Genuinely hard unresolvable case with missing reference ID, large date gap, and random amount.",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_09",
+      "date": "2026-08-20",
+      "gross_amount": 4321.0,
+      "fee": 101.98,
+      "net_amount": 4219.02,
+      "reference_id": "UNKNOWN_REF_X999",
+      "order_id": "UNKNOWN_ORD_X999"
+    },
+    "ledger_record": {
+      "order_id": "ORD_UNMATCHED_77",
+      "date": "2026-08-01",
+      "amount": 9999.0,
+      "customer_ref": "CUST_99",
+      "status": "PENDING"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_09",
+      "date": "2026-08-20",
+      "amount": 4219.02,
+      "reference_id": "UNKNOWN_REF_X999",
+      "description": "Unidentified Bank Deposit"
+    },
+    "expected_is_match": false,
+    "expected_category": "unresolved",
+    "expected_action": "human_review"
+  },
+  {
+    "case_id": "eval_case_10",
+    "category": "hard_case_miscalibrated",
+    "description": "Hard ambiguous edge case with similar reference ID 'REF_SIM_10' but completely different amount ($999 vs $150).",
+    "settlement_record": {
+      "settlement_id": "STL_EVAL_10",
+      "date": "2026-08-10",
+      "gross_amount": 999.0,
+      "fee": 23.58,
+      "net_amount": 975.42,
+      "reference_id": "REF_SIM_10",
+      "order_id": "ORD_SIM_10"
+    },
+    "ledger_record": {
+      "order_id": "REF_SIM_10_DIFF",
+      "date": "2026-08-10",
+      "amount": 150.0,
+      "customer_ref": "CUST_10",
+      "status": "SETTLED"
+    },
+    "bank_record": {
+      "txn_id": "TXN_EVAL_10",
+      "date": "2026-08-10",
+      "amount": 975.42,
+      "reference_id": "REF_SIM_10",
+      "description": "Razorpay Payout REF_SIM_10"
+    },
+    "expected_is_match": false,
+    "expected_category": "unresolved",
+    "expected_action": "human_review"
+  }
+]

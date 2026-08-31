@@ -1,0 +1,76 @@
+{
+  "trajectory_id": "traj_eval_case_06",
+  "case_id": "eval_case_06",
+  "category": "typo_reference_id",
+  "input_settlement_record": {
+    "settlement_id": "STL_EVAL_06",
+    "date": "2026-08-06",
+    "gross_amount": 1800.0,
+    "fee": 42.48,
+    "net_amount": 1757.52,
+    "reference_id": "REF_EVAL_06I",
+    "order_id": "ORD_EVAL_06"
+  },
+  "pii_masked_payload_sent_to_llm": {
+    "settlement_id": "STL_EVAL_06",
+    "date": "2026-08-06",
+    "gross_amount": 1800.0,
+    "fee": 42.48,
+    "net_amount": 1757.52,
+    "reference_id": "REF_EVAL_06I",
+    "order_id": "ORD_EVAL_06"
+  },
+  "candidate_pool": [
+    {
+      "order_id": "REF_EVAL_061",
+      "date": "2026-08-06",
+      "amount": 1800.0,
+      "customer_ref": "CUST_06",
+      "status": "SETTLED"
+    }
+  ],
+  "agent_reasoning_steps": [
+    {
+      "step": 1,
+      "tool_called": "find_similar_reference_ids",
+      "tool_arguments": {
+        "reference_id": "REF_EVAL_06I",
+        "candidate_pool": ["REF_EVAL_061"],
+        "threshold": 3
+      },
+      "tool_response": [
+        {
+          "candidate": "REF_EVAL_061",
+          "edit_distance": 1
+        }
+      ]
+    },
+    {
+      "step": 2,
+      "tool_called": "check_fee_schedule",
+      "tool_arguments": {
+        "gross_amount": 1800.0
+      },
+      "tool_response": {
+        "gross_amount": 1800.0,
+        "standard_fee_pct": 2.0,
+        "gst_pct": 18.0,
+        "total_fee_pct": 2.36,
+        "expected_fee": 42.48,
+        "expected_net_amount": 1757.52
+      }
+    }
+  ],
+  "final_decision": {
+    "is_match": true,
+    "confidence": 88.0,
+    "category": "typo_reference_id",
+    "explanation": "Typo detected in reference ID 'REF_EVAL_06I' matching candidate 'REF_EVAL_061' with edit distance 1.",
+    "tools_used": [
+      "find_similar_reference_ids",
+      "check_fee_schedule"
+    ]
+  },
+  "checkpoint_action": "auto_approved",
+  "gated_by_human_review": false
+}

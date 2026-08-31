@@ -1,0 +1,78 @@
+{
+  "trajectory_id": "traj_eval_case_05",
+  "case_id": "eval_case_05",
+  "category": "duplicate_reference",
+  "input_settlement_record": {
+    "settlement_id": "STL_EVAL_05",
+    "date": "2026-08-05",
+    "gross_amount": 500.0,
+    "fee": 11.8,
+    "net_amount": 488.2,
+    "reference_id": "REF_DUP_999",
+    "order_id": "ORD_EVAL_05"
+  },
+  "pii_masked_payload_sent_to_llm": {
+    "settlement_id": "STL_EVAL_05",
+    "date": "2026-08-05",
+    "gross_amount": 500.0,
+    "fee": 11.8,
+    "net_amount": 488.2,
+    "reference_id": "REF_DUP_999",
+    "order_id": "ORD_EVAL_05"
+  },
+  "candidate_pool": [
+    {
+      "order_id": "ORD_EVAL_05",
+      "date": "2026-08-05",
+      "amount": 500.0,
+      "customer_ref": "CUST_05",
+      "status": "SETTLED"
+    }
+  ],
+  "agent_reasoning_steps": [
+    {
+      "step": 1,
+      "tool_called": "check_fee_schedule",
+      "tool_arguments": {
+        "gross_amount": 500.0
+      },
+      "tool_response": {
+        "gross_amount": 500.0,
+        "standard_fee_pct": 2.0,
+        "gst_pct": 18.0,
+        "total_fee_pct": 2.36,
+        "expected_fee": 11.8,
+        "expected_net_amount": 488.2
+      }
+    },
+    {
+      "step": 2,
+      "tool_called": "find_similar_reference_ids",
+      "tool_arguments": {
+        "reference_id": "REF_DUP_999",
+        "candidate_pool": ["ORD_EVAL_05"],
+        "threshold": 3
+      },
+      "tool_response": []
+    }
+  ],
+  "final_decision": {
+    "is_match": true,
+    "confidence": 65.0,
+    "category": "duplicate_reference",
+    "explanation": "Duplicate reference ID 'REF_DUP_999' requires manual review for duplicate payment risk.",
+    "tools_used": [
+      "check_fee_schedule",
+      "find_similar_reference_ids"
+    ]
+  },
+  "checkpoint_action": "enqueued_for_human_review",
+  "gated_by_human_review": true,
+  "review_checkpoint_details": {
+    "confidence_score": 65.0,
+    "confidence_threshold": 70.0,
+    "reason_gated": "Confidence 65.0% is below auto-approval threshold 70.0%. Enqueued into Review Queue.",
+    "reviewer_action": "approved",
+    "human_notes": "Verified duplicate reference is valid payout."
+  }
+}

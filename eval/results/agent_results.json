@@ -1,0 +1,201 @@
+{
+  "pipeline_stage": "Full AI Finance Controller (Matcher + ReAct Agent + Human Review)",
+  "total_cases": 10,
+  "correct_cases": 5,
+  "accuracy_percentage": 50.0,
+  "total_human_time_minutes": 7.0,
+  "total_cost_usd": 0.025,
+  "elapsed_seconds": 0.0155,
+  "case_details": [
+    {
+      "case_id": "eval_case_01",
+      "category": "exact_match",
+      "expected_is_match": true,
+      "expected_category": "exact_match",
+      "agent_is_match": false,
+      "agent_category": "unresolved",
+      "agent_confidence": 40.0,
+      "is_human_reviewed": true,
+      "is_correct": false,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Unmatched settlement STL_EVAL_01 could not be verified against candidate pool."
+    },
+    {
+      "case_id": "eval_case_02",
+      "category": "fee_adjusted_amount",
+      "expected_is_match": true,
+      "expected_category": "fee_adjustment",
+      "agent_is_match": false,
+      "agent_category": "unresolved",
+      "agent_confidence": 40.0,
+      "is_human_reviewed": true,
+      "is_correct": false,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Unmatched settlement STL_EVAL_02 could not be verified against candidate pool."
+    },
+    {
+      "case_id": "eval_case_03",
+      "category": "timing_drift",
+      "expected_is_match": true,
+      "expected_category": "timing_drift",
+      "agent_is_match": false,
+      "agent_category": "unresolved",
+      "agent_confidence": 40.0,
+      "is_human_reviewed": true,
+      "is_correct": false,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Unmatched settlement STL_EVAL_03 could not be verified against candidate pool."
+    },
+    {
+      "case_id": "eval_case_04",
+      "category": "partial_refund",
+      "expected_is_match": true,
+      "expected_category": "partial_refund",
+      "agent_is_match": true,
+      "agent_category": "partial_refund",
+      "agent_confidence": 80.0,
+      "is_human_reviewed": false,
+      "is_correct": true,
+      "human_time_minutes": 0.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Settlement gross amount 800.0 reflects partial refund against original ledger order amount 1200.0."
+    },
+    {
+      "case_id": "eval_case_05",
+      "category": "duplicate_reference",
+      "expected_is_match": true,
+      "expected_category": "duplicate_reference",
+      "agent_is_match": true,
+      "agent_category": "duplicate_reference",
+      "agent_confidence": 65.0,
+      "is_human_reviewed": true,
+      "is_correct": true,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Duplicate reference ID 'REF_DUP_999' requires manual review for duplicate payment risk."
+    },
+    {
+      "case_id": "eval_case_06",
+      "category": "typo_reference_id",
+      "expected_is_match": true,
+      "expected_category": "typo_reference_id",
+      "agent_is_match": true,
+      "agent_category": "typo_reference_id",
+      "agent_confidence": 88.0,
+      "is_human_reviewed": false,
+      "is_correct": true,
+      "human_time_minutes": 0.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Typo detected in reference ID 'REF_EVAL_06I' matching candidate 'REF_EVAL_061' with edit distance 1."
+    },
+    {
+      "case_id": "eval_case_07",
+      "category": "currency_rounding",
+      "expected_is_match": true,
+      "expected_category": "currency_rounding",
+      "agent_is_match": true,
+      "agent_category": "currency_rounding",
+      "agent_confidence": 85.0,
+      "is_human_reviewed": false,
+      "is_correct": true,
+      "human_time_minutes": 0.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Minor currency rounding variance of 0.02 between bank payout and settlement."
+    },
+    {
+      "case_id": "eval_case_08",
+      "category": "many_to_one_bundle",
+      "expected_is_match": true,
+      "expected_category": "many_to_one",
+      "agent_is_match": false,
+      "agent_category": "unresolved",
+      "agent_confidence": 40.0,
+      "is_human_reviewed": true,
+      "is_correct": false,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Unmatched settlement STL_EVAL_08 could not be verified against candidate pool."
+    },
+    {
+      "case_id": "eval_case_09",
+      "category": "hard_case_unresolved",
+      "expected_is_match": false,
+      "expected_category": "unresolved",
+      "agent_is_match": true,
+      "agent_category": "duplicate_reference",
+      "agent_confidence": 65.0,
+      "is_human_reviewed": true,
+      "is_correct": false,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Duplicate reference ID 'UNKNOWN_REF_X999' requires manual review for duplicate payment risk."
+    },
+    {
+      "case_id": "eval_case_10",
+      "category": "hard_case_miscalibrated",
+      "expected_is_match": false,
+      "expected_category": "unresolved",
+      "agent_is_match": false,
+      "agent_category": "unresolved",
+      "agent_confidence": 40.0,
+      "is_human_reviewed": true,
+      "is_correct": true,
+      "human_time_minutes": 1.0,
+      "cost_usd": 0.0025,
+      "tools_used": [
+        "check_fee_schedule",
+        "find_similar_reference_ids",
+        "get_settlement_window"
+      ],
+      "explanation": "Unmatched settlement STL_EVAL_10 could not be verified against candidate pool."
+    }
+  ]
+}
