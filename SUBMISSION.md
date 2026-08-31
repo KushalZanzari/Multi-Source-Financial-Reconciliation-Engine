@@ -24,4 +24,4 @@ This document details the exact map of required hackathon deliverables to projec
 
 ---
 
-> 📢 **Important Note for Submitter**: Antigravity has generated the complete solution codebase, evaluation harness, test suite, trajectory logs, and word-for-word narration script (`docs/video_script.md`). Please record your screen following `docs/video_script.md` (under 5 minutes) and upload the video link along with the repository files to complete your submission!
+> 📢 **Important Note for Submitter**: This repository contains the complete solution codebase, evaluation harness, test suite, trajectory logs, and word-for-word narration script (`docs/video_script.md`). Please record your screen following `docs/video_script.md` (under 5 minutes) and upload the video link along with the repository files to complete your submission!
