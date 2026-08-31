@@ -24,7 +24,7 @@
       "date": "2026-08-01",
       "amount": 976.4,
       "reference_id": "REF_EVAL_01",
-      "description": "Razorpay Payout REF_EVAL_01"
+      "description": "Payment Gateway Payout REF_EVAL_01"
     },
     "expected_is_match": true,
     "expected_category": "exact_match",
@@ -55,7 +55,7 @@
       "date": "2026-08-02",
       "amount": 2441.0,
       "reference_id": "REF_EVAL_02",
-      "description": "Razorpay Payout REF_EVAL_02"
+      "description": "Payment Gateway Payout REF_EVAL_02"
     },
     "expected_is_match": true,
     "expected_category": "fee_adjustment",
@@ -86,7 +86,7 @@
       "date": "2026-08-04",
       "amount": 1464.6,
       "reference_id": "REF_EVAL_03",
-      "description": "Razorpay Payout REF_EVAL_03"
+      "description": "Payment Gateway Payout REF_EVAL_03"
     },
     "expected_is_match": true,
     "expected_category": "timing_drift",
@@ -117,7 +117,7 @@
       "date": "2026-08-03",
       "amount": 781.12,
       "reference_id": "REF_EVAL_04",
-      "description": "Razorpay Partial Refund Payout REF_EVAL_04"
+      "description": "Payment Gateway Partial Refund Payout REF_EVAL_04"
     },
     "expected_is_match": true,
     "expected_category": "partial_refund",
@@ -148,7 +148,7 @@
       "date": "2026-08-05",
       "amount": 488.2,
       "reference_id": "REF_DUP_999",
-      "description": "Razorpay Duplicate Ref Payout REF_DUP_999"
+      "description": "Payment Gateway Duplicate Ref Payout REF_DUP_999"
     },
     "expected_is_match": true,
     "expected_category": "duplicate_reference",
@@ -179,7 +179,7 @@
       "date": "2026-08-06",
       "amount": 1757.52,
       "reference_id": "REF_EVAL_06I",
-      "description": "Razorpay Payout REF_EVAL_06I"
+      "description": "Payment Gateway Payout REF_EVAL_06I"
     },
     "expected_is_match": true,
     "expected_category": "typo_reference_id",
@@ -210,7 +210,7 @@
       "date": "2026-08-07",
       "amount": 1205.40,
       "reference_id": "REF_EVAL_07",
-      "description": "Razorpay FX Payout REF_EVAL_07"
+      "description": "Payment Gateway FX Payout REF_EVAL_07"
     },
     "expected_is_match": true,
     "expected_category": "currency_rounding",
@@ -264,7 +264,7 @@
       "date": "2026-08-08",
       "amount": 2929.2,
       "reference_id": "REF_M21_BUNDLE",
-      "description": "Razorpay Multi-Order Payout REF_M21_BUNDLE"
+      "description": "Payment Gateway Multi-Order Payout REF_M21_BUNDLE"
     },
     "expected_is_match": true,
     "expected_category": "many_to_one",
@@ -326,7 +326,7 @@
       "date": "2026-08-10",
       "amount": 975.42,
       "reference_id": "REF_SIM_10",
-      "description": "Razorpay Payout REF_SIM_10"
+      "description": "Payment Gateway Payout REF_SIM_10"
     },
     "expected_is_match": false,
     "expected_category": "unresolved",

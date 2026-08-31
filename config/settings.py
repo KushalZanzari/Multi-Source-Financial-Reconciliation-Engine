@@ -27,7 +27,7 @@ DATA_DIR: Path = BASE_DIR / "data"
 OUTPUTS_DIR: Path = BASE_DIR / "outputs"
 OUTPUTS_DIR.mkdir(exist_ok=True, parents=True)
 
-# Standard Fee Schedule for Verification (Razorpay simulated fee rules)
+# Standard Fee Schedule for Verification (Payment Gateway simulated fee rules)
 # Percentage fee and fixed transaction fee in INR
 FEE_SCHEDULE = {
     "standard_rate": 0.02,  # 2.0% payment gateway fee

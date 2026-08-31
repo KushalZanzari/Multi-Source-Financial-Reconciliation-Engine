@@ -21,7 +21,7 @@ from src.schema_mapper import apply_mapping_and_normalize, map_columns
 
 # Page configuration
 st.set_page_config(
-    page_title="AI Finance Controller | Razorpay Buildathon",
+    page_title="AI Finance Controller | Automated Reconciliation Platform",
     page_icon="⚡",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -230,7 +230,7 @@ if st.session_state["processed_dfs"]:
             bnk_df = dfs["settlement_report"].copy()
             bnk_df["txn_id"] = [f"TXN_{i+1:04d}" for i in range(len(bnk_df))]
             bnk_df["amount"] = bnk_df["net_amount"]
-            bnk_df["description"] = [f"Razorpay Payout {ref}" for ref in bnk_df["reference_id"]]
+            bnk_df["description"] = [f"Payment Gateway Payout {ref}" for ref in bnk_df["reference_id"]]
             dfs["bank_statement"] = bnk_df[["txn_id", "date", "amount", "reference_id", "description"]]
             st.session_state["quality_reports"]["bank_statement"] = check_data_quality(dfs["bank_statement"], "bank_statement")
 

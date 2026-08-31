@@ -7,7 +7,7 @@ Built on an existing reconciliation pipeline; this submission adds the baseline,
 ## 🎯 Intended User, Bottleneck, & Why It Matters
 
 ### Intended User
-Finance and Operations teams at e-commerce merchants, marketplace aggregators, and fintech companies responsible for daily payment reconciliation across bank accounts, payment gateway settlement reports (Razorpay, Stripe, PayU), and internal ERP sales ledgers.
+Finance and Operations teams at e-commerce merchants, marketplace aggregators, and fintech companies responsible for daily payment reconciliation across bank accounts, payment gateway settlement reports (Payment Gateway, Stripe, PayU), and internal ERP sales ledgers.
 
 ### The Bottleneck
 Manual financial reconciliation is notoriously slow, error-prone, and painful. Finance teams spend **45+ minutes per 10 records** manually cross-referencing order IDs, deducting gateway fees (2% + 18% GST), catching single-character OCR typos, matching 3-day bank settlement windows, and unbundling many-to-one payout deposits.

@@ -5,7 +5,7 @@
   "accuracy_percentage": 30.0,
   "total_human_time_minutes": 45.0,
   "total_cost_usd": 0.0,
-  "elapsed_seconds": 0.0022,
+  "elapsed_seconds": 0.0023,
   "case_details": [
     {
       "case_id": "eval_case_01",

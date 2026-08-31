@@ -130,7 +130,7 @@ def sum_candidate_subsets(
 AGENT_TOOL_SCHEMAS = [
     {
         "name": "check_fee_schedule",
-        "description": "Calculates expected payment gateway fees and net payout amount based on Razorpay standard fee schedule.",
+        "description": "Calculates expected payment gateway fees and net payout amount based on Payment Gateway standard fee schedule.",
         "input_schema": {
             "type": "object",
             "properties": {

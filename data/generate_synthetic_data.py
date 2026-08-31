@@ -86,7 +86,7 @@ def generate_synthetic_dataset(seed: int = 42, num_base_records: int = 50) -> No
             "date": (txn_date + timedelta(days=1)).strftime("%Y-%m-%d"),
             "amount": net,
             "reference_id": ref_id,
-            "description": f"Payout Razorpay {settlement_id} {ref_id}"
+            "description": f"Payout Payment Gateway {settlement_id} {ref_id}"
         })
 
         ground_truth[ref_id] = {
